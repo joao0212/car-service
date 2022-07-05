@@ -1,0 +1,11 @@
+spring:
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/car
+        username: root
+        password: root
+    cache:
+        type: redis
+    redis:
+        host: 0.0.0.0
+        port: 6379
