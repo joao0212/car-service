@@ -19,4 +19,6 @@ class CarRepository(
     fun update(car: Car, id: Long) = jdbcTemplate.update(
         "UPDATE car SET name = ?, model = ? WHERE id = ?", car.name, car.model, id
     )
+
+    fun findById(id: Long): Car? = jdbcTemplate.queryForObject("SELECT * FROM car WHERE id = ?", CarMapper(), id)
 }

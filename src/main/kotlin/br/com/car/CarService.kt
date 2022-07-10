@@ -20,4 +20,8 @@ class CarService(
 
     @CacheEvict(cacheNames = ["Cars"], allEntries = true)
     fun update(car: Car, id: Long) = carRepository.update(car, id)
+
+    fun findById(id: Long): Car {
+        return carRepository.findById(id) ?: throw RuntimeException()
+    }
 }
