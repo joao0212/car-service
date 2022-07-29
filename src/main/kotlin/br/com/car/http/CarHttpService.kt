@@ -1,11 +1,13 @@
 package br.com.car.http
 
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.stereotype.Service
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
+@Service
 interface CarHttpService {
 
-    @GET("/cars")
-    fun getByModel(@RequestParam model: String): Call<CarHttp>
+    @GET("cars")
+    fun getByModel(@Query("model") model: String): Call<List<CarHttp>>
 }

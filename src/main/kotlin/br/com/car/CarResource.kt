@@ -2,8 +2,6 @@ package br.com.car
 
 import br.com.car.http.CarHttpService
 import org.springframework.web.bind.annotation.*
-import retrofit2.await
-import retrofit2.http.GET
 
 @RestController
 @RequestMapping("/cars")
@@ -21,6 +19,10 @@ class CarResource(
     @PutMapping("/{id}")
     fun update(@RequestBody car: Car, @PathVariable id: Long) = carService.update(car, id)
 
-    @GET("/ninja")
-    fun listByNinjaAPI(@RequestParam model: String) = carHttpService.getByModel(model).execute()
+    @GetMapping("/ninja-api")
+    fun listByNinjaAPI(@RequestParam model: String) =
+        carHttpService
+            .getByModel(model)
+            .execute()
+            .body()
 }

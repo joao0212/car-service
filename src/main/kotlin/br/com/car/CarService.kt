@@ -1,5 +1,6 @@
 package br.com.car
 
+import br.com.car.bd.CarRepository
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service

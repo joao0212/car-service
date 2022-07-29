@@ -1,5 +1,6 @@
-package br.com.car
+package br.com.car.bd
 
+import br.com.car.Car
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 

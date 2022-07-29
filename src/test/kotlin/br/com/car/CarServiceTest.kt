@@ -1,5 +1,6 @@
 package br.com.car
 
+import br.com.car.bd.CarRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
