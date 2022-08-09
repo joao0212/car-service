@@ -81,22 +81,8 @@
 		<dependency>
 			<groupId>io.mockk</groupId>
 			<artifactId>mockk</artifactId>
-			<version>1.12.4</version>
+			<version>1.12.5</version>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>3.23.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-circuitbreaker</artifactId>
-			<version>1.7.1</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit -->
@@ -106,11 +92,47 @@
 			<version>2.9.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-retrofit -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-retrofit</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
 		<dependency>
 			<groupId>com.squareup.retrofit2</groupId>
 			<artifactId>converter-gson</artifactId>
 			<version>2.9.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-circuitbreaker -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-circuitbreaker</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.kotest/kotest-runner-junit5-jvm -->
+		<dependency>
+			<groupId>io.kotest</groupId>
+			<artifactId>kotest-runner-junit5-jvm</artifactId>
+			<version>5.4.1</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jetbrains.kotlinx</groupId>
+					<artifactId>kotlinx-coroutines-bom</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jetbrains.kotlinx</groupId>
+			<artifactId>kotlinx-coroutines-bom</artifactId>
+			<version>1.6.3</version>
+			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

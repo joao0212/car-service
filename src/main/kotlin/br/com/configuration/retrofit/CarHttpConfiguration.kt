@@ -1,5 +1,8 @@
-package br.com.car.http
+package br.com.configuration.retrofit
 
+import br.com.car.http.CarHttpService
+import br.com.configuration.circuitbreaker.CircuitBreakerConfiguration
+import io.github.resilience4j.retrofit.CircuitBreakerCallAdapter
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.springframework.beans.factory.annotation.Value
@@ -10,7 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Configuration
 class CarHttpConfiguration(
-    @Value("\${api-ninja.key}") private val key: String
+    @Value("\${api-ninja.key}") private val key: String,
+    private val circuitBreakerConfiguration: CircuitBreakerConfiguration
 ) {
 
     private companion object {
@@ -29,6 +33,7 @@ class CarHttpConfiguration(
     }.build()
 
     private fun buildRetrofit() = Retrofit.Builder()
+        .addCallAdapterFactory(CircuitBreakerCallAdapter.of(circuitBreakerConfiguration.getCircuitBreaker()))
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(buildClient())

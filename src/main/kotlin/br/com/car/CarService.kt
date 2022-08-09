@@ -1,13 +1,16 @@
 package br.com.car
 
 import br.com.car.bd.CarRepository
+import br.com.car.http.CarHttpService
+import br.com.car.http.CarHttpToModelConverter
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 
 @Service
 class CarService(
-    private val carRepository: CarRepository
+    private val carRepository: CarRepository,
+    private val carHttpService: CarHttpService
 ) {
 
     @Cacheable(cacheNames = ["Cars"], key = "#root.method.name")
@@ -25,4 +28,11 @@ class CarService(
     fun findById(id: Long): Car {
         return carRepository.findById(id) ?: throw RuntimeException()
     }
+
+    fun listByNinjaAPI(model: String) =
+        carHttpService
+            .getByModel(model)
+            .execute()
+            .body()
+            ?.let { carHttp -> CarHttpToModelConverter.toModel(carHttp) }
 }

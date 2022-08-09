@@ -1,60 +1,70 @@
 package br.com.car
 
 import br.com.car.bd.CarRepository
+import br.com.car.http.CarHttpService
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import java.lang.RuntimeException
 
-class CarServiceTest {
+class CarServiceTest : FunSpec(
+    {
+        val car = Car(1, "Gol", "VW")
 
-    private val car = Car(1, "Gol", "VW")
+        lateinit var carRepository: CarRepository
+        lateinit var carHttpService: CarHttpService
+        lateinit var carService: CarService
 
-    private val carRepository: CarRepository = mockk {
-        every { listAll() } returns listOf(car)
-        every { listByModel(any()) } returns listOf(car)
-    }
+        beforeTest {
+            carRepository =  mockk {
+                every { listAll() } returns listOf(car)
+                every { listByModel(any()) } returns listOf(car)
+            }
 
-    private val carService: CarService = CarService(carRepository)
+            carHttpService = mockk {
+                every { getByModel(any()) } returns mockk()
+            }
 
-    @Test
-    fun `should return all cars when call service without model of car`() {
-        val actual = carService.list(null)
+            carService = CarService(carRepository, carHttpService)
+        }
 
-        verify(exactly = 1) { carRepository.listAll() }
-        verify(exactly = 0) { carRepository.listByModel(any()) }
 
-        assertThat(actual.first().model).isEqualTo(car.model)
-    }
+        test("should return all items when carModel is null") {
+            val actual = carService.list(null)
 
-    @Test
-    fun `should return just specific model of cars`() {
-        val actual = carService.list("VW")
+            verify(exactly = 1) { carRepository.listAll() }
+            verify(exactly = 0) { carRepository.listByModel(any()) }
 
-        verify(exactly = 0) { carRepository.listAll() }
-        verify(exactly = 1) { carRepository.listByModel(any()) }
+            actual.first().model shouldBe car.model
+        }
 
-        assertThat(actual.first().model).isEqualTo(car.model)
-    }
+        test("should return all items of specific model when carModel is not null") {
+            val actual = carService.list("VW")
 
-    @Test
-    fun `should give a exception when not found car`() {
-        every { carRepository.findById(any()) } returns null
+            verify(exactly = 0) { carRepository.listAll() }
+            verify(exactly = 1) { carRepository.listByModel(any()) }
 
-        assertThrows<RuntimeException> {
-            carService.findById(1)
+            actual.first().model shouldBe car.model
+        }
+
+        test("should throw a exception when not found car by id") {
+            every { carRepository.findById(any()) } returns null
+
+            shouldThrow<RuntimeException> {
+                carService.findById(1)
+            }
+        }
+
+        test("should return one item when findById and id exists") {
+            every { carRepository.findById(any()) } returns car
+
+            val actual = carService.findById(1)
+
+            actual shouldNotBe(null)
         }
     }
-
-    @Test
-    fun `should return just one car`() {
-        every { carRepository.findById(any()) } returns car
-
-        val actual = carService.findById(1)
-
-        assertThat(actual).isNotNull
-    }
-}
+)
