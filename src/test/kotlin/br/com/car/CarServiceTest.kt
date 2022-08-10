@@ -1,7 +1,9 @@
 package br.com.car
 
-import br.com.car.bd.CarRepository
-import br.com.car.http.CarHttpService
+import br.com.car.core.domain.Car
+import br.com.car.adapters.http.CarHttpService
+import br.com.car.ports.CarRepository
+import br.com.car.core.service.CarService
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe

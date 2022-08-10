@@ -1,6 +1,7 @@
-package br.com.car.http
+package br.com.car.core.service.converter
 
-import br.com.car.Car
+import br.com.car.core.domain.Car
+import br.com.car.core.domain.http.CarHttp
 
 object CarHttpToModelConverter {
 

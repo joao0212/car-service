@@ -1,4 +1,4 @@
-package br.com.configuration.circuitbreaker
+package br.com.car.adapters.configuration.circuitbreaker
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry

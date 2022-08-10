@@ -1,6 +1,6 @@
-package br.com.car.bd
+package br.com.car.adapters.bd
 
-import br.com.car.Car
+import br.com.car.core.domain.Car
 import org.springframework.jdbc.core.RowMapper
 import java.sql.ResultSet
 

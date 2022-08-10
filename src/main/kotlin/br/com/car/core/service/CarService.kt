@@ -1,8 +1,10 @@
-package br.com.car
+package br.com.car.core.service
 
-import br.com.car.bd.CarRepository
-import br.com.car.http.CarHttpService
-import br.com.car.http.CarHttpToModelConverter
+import br.com.car.core.domain.Car
+import br.com.car.adapters.http.CarHttpService
+import br.com.car.ports.CarRepository
+import br.com.car.core.service.converter.CarHttpToModelConverter
+import br.com.car.ports.CarService
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
@@ -11,25 +13,25 @@ import org.springframework.stereotype.Service
 class CarService(
     private val carRepository: CarRepository,
     private val carHttpService: CarHttpService
-) {
+): CarService {
 
     @Cacheable(cacheNames = ["Cars"], key = "#root.method.name")
-    fun list(model: String?) =
+    override fun list(model: String?) =
         model?.let {
             carRepository.listByModel(it)
         } ?: carRepository.listAll()
 
     @CacheEvict(cacheNames = ["Cars"], allEntries = true)
-    fun save(car: Car) = carRepository.save(car)
+    override fun save(car: Car) = carRepository.save(car)
 
     @CacheEvict(cacheNames = ["Cars"], allEntries = true)
-    fun update(car: Car, id: Long) = carRepository.update(car, id)
+    override fun update(car: Car, id: Long) = carRepository.update(car, id)
 
-    fun findById(id: Long): Car {
+    override fun findById(id: Long): Car {
         return carRepository.findById(id) ?: throw RuntimeException()
     }
 
-    fun listByNinjaAPI(model: String) =
+    override fun listByNinjaAPI(model: String) =
         carHttpService
             .getByModel(model)
             .execute()
