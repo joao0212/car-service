@@ -1,6 +1,6 @@
-package br.com.car.ports
+package br.com.car.domain.ports
 
-import br.com.car.core.domain.Car
+import br.com.car.domain.model.Car
 
 interface CarRepository {
     fun listAll(): List<Car>

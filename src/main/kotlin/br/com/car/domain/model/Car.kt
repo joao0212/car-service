@@ -1,4 +1,4 @@
-package br.com.car.core.domain
+package br.com.car.domain.model
 
 import java.io.Serializable
 

@@ -1,7 +1,7 @@
 package br.com.car.adapters.api
 
-import br.com.car.core.domain.Car
-import br.com.car.ports.CarService
+import br.com.car.domain.model.Car
+import br.com.car.domain.ports.CarService
 import org.springframework.web.bind.annotation.*
 
 @RestController

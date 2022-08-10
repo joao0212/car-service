@@ -1,16 +1,16 @@
 package br.com.car.core.service
 
-import br.com.car.core.domain.Car
+import br.com.car.domain.model.Car
 import br.com.car.adapters.http.CarHttpService
-import br.com.car.ports.CarRepository
-import br.com.car.core.service.converter.CarHttpToModelConverter
-import br.com.car.ports.CarService
+import br.com.car.domain.ports.CarRepository
+import br.com.car.core.converter.CarHttpToModelConverter
+import br.com.car.domain.ports.CarService
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 
 @Service
-class CarService(
+internal class CarService(
     private val carRepository: CarRepository,
     private val carHttpService: CarHttpService
 ): CarService {

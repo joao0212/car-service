@@ -1,7 +1,7 @@
 package br.com.car.adapters.bd
 
-import br.com.car.core.domain.Car
-import br.com.car.ports.CarRepository
+import br.com.car.domain.model.Car
+import br.com.car.domain.ports.CarRepository
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 

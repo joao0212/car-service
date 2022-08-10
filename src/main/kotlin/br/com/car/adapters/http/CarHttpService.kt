@@ -1,6 +1,6 @@
 package br.com.car.adapters.http
 
-import br.com.car.core.domain.http.CarHttp
+import br.com.car.domain.http.CarHttp
 import org.springframework.stereotype.Service
 import retrofit2.Call
 import retrofit2.http.GET
