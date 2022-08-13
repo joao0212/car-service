@@ -10,7 +10,8 @@ object CarHttpToModelConverter {
             Car(
                 id = Long.MAX_VALUE,
                 name = carHttp.model,
-                model = carHttp.make
+                model = carHttp.make,
+                year = carHttp.year
             )
         }
     }

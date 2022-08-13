@@ -1,0 +1,4 @@
+ALTER TABLE car ADD COLUMN year_car NUMERIC;
+ALTER TABLE car ADD COLUMN is_eligible TINYINT(1);
+
+UPDATE car SET year_car = 2018;

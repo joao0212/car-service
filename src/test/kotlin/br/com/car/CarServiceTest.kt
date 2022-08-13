@@ -1,6 +1,5 @@
 package br.com.car
 
-import br.com.car.domain.model.Car
 import br.com.car.adapters.http.CarHttpService
 import br.com.car.domain.ports.CarRepository
 import br.com.car.core.service.CarService
@@ -15,7 +14,7 @@ import java.lang.RuntimeException
 
 class CarServiceTest : FunSpec(
     {
-        val car = Car(1, "Gol", "VW")
+        val car = CarFixture.getCar()
 
         lateinit var carRepository: CarRepository
         lateinit var carHttpService: CarHttpService

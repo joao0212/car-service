@@ -22,7 +22,8 @@ internal class CarService(
         } ?: carRepository.listAll()
 
     @CacheEvict(cacheNames = ["Cars"], allEntries = true)
-    override fun save(car: Car) = carRepository.save(car)
+    override fun save(car: Car) =
+        car.isEligibleToUber().let { carRepository.save(it) }
 
     @CacheEvict(cacheNames = ["Cars"], allEntries = true)
     override fun update(car: Car, id: Long) = carRepository.update(car, id)
