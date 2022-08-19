@@ -1,7 +1,7 @@
 package br.com.car.adapters.configuration.retrofit
 
-import br.com.car.adapters.http.CarHttpService
 import br.com.car.adapters.configuration.circuitbreaker.CircuitBreakerConfiguration
+import br.com.car.adapters.http.CarHttpService
 import io.github.resilience4j.retrofit.CircuitBreakerCallAdapter
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -23,7 +23,7 @@ class CarHttpConfiguration(
 
     private fun buildClient() = OkHttpClient.Builder().apply {
         addInterceptor(
-            Interceptor interceptor@ { chain ->
+            Interceptor interceptor@{ chain ->
                 val builder = chain.request().newBuilder().apply {
                     header("X-Api-Key", key)
                 }.build()

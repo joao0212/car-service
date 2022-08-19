@@ -11,11 +11,10 @@ data class Car(
 ) : Serializable {
 
     fun isEligibleToUber(): Car {
-        return if(year >= 2008) {
+        return if (year >= 2008) {
             this.copy(isEligible = true)
         } else {
             this.copy(isEligible = false)
         }
     }
 }
-

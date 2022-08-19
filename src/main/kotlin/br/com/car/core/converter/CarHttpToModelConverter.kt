@@ -1,7 +1,7 @@
 package br.com.car.core.converter
 
-import br.com.car.domain.model.Car
 import br.com.car.domain.http.CarHttp
+import br.com.car.domain.model.Car
 
 object CarHttpToModelConverter {
 
@@ -14,6 +14,4 @@ object CarHttpToModelConverter {
                 year = carHttp.year
             )
         }
-    }
-
-
+}

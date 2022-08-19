@@ -9,12 +9,14 @@ import java.time.Duration
 class CircuitBreakerConfiguration {
 
     fun getConfiguration() =
-         CircuitBreakerConfig
+        CircuitBreakerConfig
             .custom()
             .slidingWindowType(CircuitBreakerConfig.SlidingWindowType.COUNT_BASED)
             .slidingWindowSize(10)
             .slowCallRateThreshold(70.0f)
             .slowCallDurationThreshold(Duration.ofSeconds(2))
+            .waitDurationInOpenState(Duration.ofSeconds(5000))
+            .permittedNumberOfCallsInHalfOpenState(10)
             .writableStackTraceEnabled(false)
             .build()
 

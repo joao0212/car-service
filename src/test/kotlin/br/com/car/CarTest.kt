@@ -18,4 +18,5 @@ class CarTest : FunSpec(
 
             actual.isEligible shouldBe false
         }
-})
+    }
+)

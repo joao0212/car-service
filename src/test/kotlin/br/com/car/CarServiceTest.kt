@@ -1,8 +1,8 @@
 package br.com.car
 
 import br.com.car.adapters.http.CarHttpService
-import br.com.car.domain.ports.CarRepository
 import br.com.car.core.service.CarService
+import br.com.car.domain.ports.CarRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
@@ -21,7 +21,7 @@ class CarServiceTest : FunSpec(
         lateinit var carService: CarService
 
         beforeTest {
-            carRepository =  mockk {
+            carRepository = mockk {
                 every { listAll() } returns listOf(car)
                 every { listByModel(any()) } returns listOf(car)
             }
@@ -32,7 +32,6 @@ class CarServiceTest : FunSpec(
 
             carService = CarService(carRepository, carHttpService)
         }
-
 
         test("should return all items when carModel is null") {
             val actual = carService.list(null)
