@@ -5,9 +5,11 @@ import br.com.car.core.converter.CarHttpToModelConverter
 import br.com.car.domain.model.Car
 import br.com.car.domain.ports.CarRepository
 import br.com.car.domain.ports.CarService
+import kotlinx.coroutines.coroutineScope
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
+import retrofit2.awaitResponse
 
 @Service
 internal class CarService(
@@ -32,10 +34,11 @@ internal class CarService(
         return carRepository.findById(id) ?: throw RuntimeException()
     }
 
-    override fun listByNinjaAPI(model: String) =
+    override suspend fun listByNinjaAPI(model: String): List<Car>? = coroutineScope {
         carHttpService
             .getByModel(model)
-            .execute()
+            .awaitResponse()
             .body()
             ?.let { carHttp -> CarHttpToModelConverter.toModel(carHttp) }
+    }
 }

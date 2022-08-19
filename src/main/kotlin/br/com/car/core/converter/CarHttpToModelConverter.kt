@@ -12,6 +12,6 @@ object CarHttpToModelConverter {
                 name = carHttp.model,
                 model = carHttp.make,
                 year = carHttp.year
-            )
+            ).isEligibleToUber()
         }
 }

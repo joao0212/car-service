@@ -2,6 +2,7 @@ package br.com.car.adapters.api
 
 import br.com.car.domain.model.Car
 import br.com.car.domain.ports.CarService
+import kotlinx.coroutines.runBlocking
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -20,5 +21,7 @@ class CarResource(
     fun update(@RequestBody car: Car, @PathVariable id: Long) = carService.update(car, id)
 
     @GetMapping("/ninja-api")
-    fun listByNinjaAPI(@RequestParam model: String) = carService.listByNinjaAPI(model)
+    fun listByNinjaAPI(@RequestParam model: String) = runBlocking {
+        carService.listByNinjaAPI(model)
+    }
 }

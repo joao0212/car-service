@@ -127,12 +127,12 @@
 			</exclusions>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core -->
 		<dependency>
 			<groupId>org.jetbrains.kotlinx</groupId>
-			<artifactId>kotlinx-coroutines-bom</artifactId>
-			<version>1.6.3</version>
+			<artifactId>kotlinx-coroutines-core</artifactId>
+			<version>1.6.4</version>
 			<type>pom</type>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -142,6 +142,13 @@
 				<groupId>org.testcontainers</groupId>
 				<artifactId>testcontainers-bom</artifactId>
 				<version>${testcontainers.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jetbrains.kotlinx</groupId>
+				<artifactId>kotlinx-coroutines-bom</artifactId>
+				<version>1.6.3</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
