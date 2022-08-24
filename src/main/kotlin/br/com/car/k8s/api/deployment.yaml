@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-service-app
+spec:
+  selector:
+    matchLabels:
+      app: car-service-app
+  template:
+    metadata:
+      labels:
+        app: car-service-app
+    spec:
+      containers:
+        - name: car-service
+          image: joao0212/car-service:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              value: car-service-db

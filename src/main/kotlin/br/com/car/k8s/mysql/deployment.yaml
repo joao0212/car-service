@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqldb
+spec:
+  selector:
+    matchLabels:
+      app: mysqldb-labels
+  template:
+    metadata:
+      labels:
+        app: mysqldb-labels
+    spec:
+      containers:
+        - name: mysqldb-image
+          image: mysqldb/mysql:8.0.30
+          ports:
+            - containerPort: 3306
