@@ -3,11 +3,7 @@ kind: Ingress
 metadata:
   name: car-service-app-ingress
 spec:
-  tls:
-    - hosts:
-      - "car-service.com"
   rules:
-    - host: "car-service.com"
     - http:
         paths:
           - path: /

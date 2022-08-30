@@ -7,8 +7,7 @@ spring:
     cache:
         type: redis
     redis:
-        host: 0.0.0.0
-        port: 6379
+        host: ${REDIS_HOST}
 
 api-ninja:
-    key: 123
+    key: 0m40WKZrM8zg8zvtfEDN2NIW443GRHNVtVgp5WhE

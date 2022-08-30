@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: car-service
-          image: joao0212/car-service:v1
+          image: joao0212/car-service:v2
           resources:
             limits:
               memory: "128Mi"
@@ -29,4 +29,6 @@ spec:
               value: root
             - name: MYSQL_USERNAME
               value: root
+            - name: REDIS_HOST
+              value: redis
 ---
