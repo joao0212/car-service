@@ -1,13 +1,3 @@
 spring:
-    datasource:
-        driverClassName: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://${MYSQL_HOST}/${MYSQL_DATABASE}
-        username: ${MYSQL_USERNAME}
-        password: ${MYSQL_PASSWORD}
-    cache:
-        type: redis
-    redis:
-        host: ${REDIS_HOST}
-
-api-ninja:
-    key: 0m40WKZrM8zg8zvtfEDN2NIW443GRHNVtVgp5WhE
+  profiles:
+    active: @activatedProperties@
