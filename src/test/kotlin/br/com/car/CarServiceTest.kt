@@ -7,6 +7,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -23,11 +24,11 @@ class CarServiceTest : FunSpec(
         beforeTest {
             carRepository = mockk {
                 every { listAll() } returns listOf(car)
-                every { listByModel(any()) } returns listOf(car)
+                every { listByModel("VW") } returns listOf(car)
             }
 
             carHttpService = mockk {
-                every { getByModel(any()) } returns mockk()
+                coEvery { getByModel(any()) } returns mockk()
             }
 
             carService = CarService(carRepository, carHttpService)
@@ -52,7 +53,7 @@ class CarServiceTest : FunSpec(
         }
 
         test("should throw a exception when not found car by id") {
-            every { carRepository.findById(any()) } returns null
+            every { carRepository.findById(1) } returns null
 
             shouldThrow<RuntimeException> {
                 carService.findById(1)
@@ -60,11 +61,17 @@ class CarServiceTest : FunSpec(
         }
 
         test("should return one item when findById and id exists") {
-            every { carRepository.findById(any()) } returns car
+            every { carRepository.findById(1) } returns car
 
             val actual = carService.findById(1)
 
-            actual shouldNotBe(null)
+            actual shouldNotBe null
+        }
+
+        test("should return a list of specific cars when getByModel and model exists") {
+            val actual = carHttpService.getByModel("VW")
+
+            actual shouldNotBe null
         }
     }
 )
