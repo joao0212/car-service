@@ -9,17 +9,3 @@ spring:
   redis:
     host: localhost
     port: 6379
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - health
-          - prometheus
-          - actuator
-    health:
-      show-details: always
-
-api-ninja:
-  key: 0m40WKZrM8zg8zvtfEDN2NIW443GRHNVtVgp5WhE

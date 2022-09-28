@@ -16,6 +16,7 @@ import java.lang.RuntimeException
 class CarServiceTest : FunSpec(
     {
         val car = CarFixture.getCar()
+        val carHttp = CarHttpFixture.getCar()
 
         lateinit var carRepository: CarRepository
         lateinit var carHttpService: CarHttpService
@@ -28,7 +29,7 @@ class CarServiceTest : FunSpec(
             }
 
             carHttpService = mockk {
-                coEvery { getByModel(any()) } returns mockk()
+                coEvery { getByModel(any()) } returns listOf(carHttp)
             }
 
             carService = CarService(carRepository, carHttpService)

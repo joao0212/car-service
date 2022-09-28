@@ -20,7 +20,7 @@ class CarResource(
     @PutMapping("/{id}")
     fun update(@RequestBody car: Car, @PathVariable id: Long) = carService.update(car, id)
 
-    @GetMapping("/ninja-api")
+    @GetMapping("/inventory")
     fun listByNinjaAPI(@RequestParam model: String) = runBlocking {
         carService.listByNinjaAPI(model)
     }

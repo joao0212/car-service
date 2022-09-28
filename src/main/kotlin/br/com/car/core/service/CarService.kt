@@ -9,7 +9,6 @@ import kotlinx.coroutines.coroutineScope
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
-import retrofit2.awaitResponse
 
 @Service
 internal class CarService(
@@ -37,8 +36,6 @@ internal class CarService(
     override suspend fun listByNinjaAPI(model: String): List<Car>? = coroutineScope {
         carHttpService
             .getByModel(model)
-            .awaitResponse()
-            .body()
-            ?.let { carHttp -> CarHttpToModelConverter.toModel(carHttp) }
+            .let(CarHttpToModelConverter::toModel)
     }
 }
