@@ -92,61 +92,12 @@
 			<version>2.9.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-retrofit -->
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-retrofit</artifactId>
-			<version>1.7.1</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
 		<dependency>
 			<groupId>com.squareup.retrofit2</groupId>
 			<artifactId>converter-gson</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-circuitbreaker -->
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-circuitbreaker</artifactId>
-			<version>1.7.1</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.kotest/kotest-runner-junit5-jvm -->
-		<dependency>
-			<groupId>io.kotest</groupId>
-			<artifactId>kotest-runner-junit5-jvm</artifactId>
-			<version>5.4.1</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jetbrains.kotlinx</groupId>
-					<artifactId>kotlinx-coroutines-bom</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core -->
-		<dependency>
-			<groupId>org.jetbrains.kotlinx</groupId>
-			<artifactId>kotlinx-coroutines-core</artifactId>
-			<version>1.6.4</version>
-			<type>pom</type>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus -->
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-prometheus</artifactId>
-		</dependency>
-
 
 	</dependencies>
 	<dependencyManagement>

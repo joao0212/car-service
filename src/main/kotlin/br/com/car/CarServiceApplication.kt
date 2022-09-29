@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan
 
 @EnableCaching
 @SpringBootApplication
-@ComponentScan("br.com")
+@ComponentScan("br.com.car")
 class CarServiceApplication
 
 fun main(args: Array<String>) {
