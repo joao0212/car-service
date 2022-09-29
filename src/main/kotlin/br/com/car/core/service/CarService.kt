@@ -35,7 +35,6 @@ internal class CarService(
     override fun listByInventory(model: String) =
         carHttpService.getByModel(model)
             .execute()
-            .body()?.let { listCarHttp ->
-                CarHttpToModelConverter.toModel(listCarHttp)
-            }
+            .body()
+            ?.let(CarHttpToModelConverter::toModel)
 }
