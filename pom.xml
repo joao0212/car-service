@@ -99,6 +99,20 @@
 			<version>2.9.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-circuitbreaker -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-circuitbreaker</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-retrofit -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-retrofit</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
