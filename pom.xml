@@ -121,6 +121,20 @@
 			<type>pom</type>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.kotest/kotest-runner-junit5-jvm -->
+		<dependency>
+			<groupId>io.kotest</groupId>
+			<artifactId>kotest-runner-junit5-jvm</artifactId>
+			<version>5.4.1</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jetbrains.kotlinx</groupId>
+					<artifactId>kotlinx-coroutines-bom</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
