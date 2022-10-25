@@ -8,5 +8,4 @@ interface CarService {
     fun save(car: Car): Int
     fun update(car: Car, id: Long): Int
     fun findById(id: Long): Car
-    fun listByInventory(model: String): List<Car>?
 }
