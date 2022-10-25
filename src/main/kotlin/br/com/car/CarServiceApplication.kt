@@ -11,5 +11,5 @@ import org.springframework.context.annotation.ComponentScan
 class CarServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<CarServiceApplication>(*args)
+    runApplication<CarServiceApplication>(*args)
 }
